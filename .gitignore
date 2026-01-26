@@ -1,0 +1,19 @@
+# Direnv
+.direnv/
+
+# Node
+node_modules/
+
+# Secrets (unencrypted)
+*.secret
+secrets/*.json
+!secrets/*.age
+
+# OAuth tokens (should be encrypted with agenix)
+.gmail-mcp/
+credentials.json
+token.json
+
+# Nix
+result
+result-*
