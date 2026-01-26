@@ -13,7 +13,7 @@ A Nix flake for running the [Gmail MCP Server](https://github.com/GongRzhe/Gmail
 ### 1. Clone and enter the development shell
 
 ```bash
-git clone https://github.com/imalison/gmail-mcp.git
+git clone https://github.com/colonelpanic8/gmail-mcp.git
 cd gmail-mcp
 direnv allow  # or: nix develop
 ```
@@ -52,7 +52,7 @@ git add secrets/gmail-oauth-token.json.age && git commit -m "Add encrypted token
 ## Setup on Additional Machines
 
 ```bash
-git clone https://github.com/imalison/gmail-mcp.git
+git clone https://github.com/colonelpanic8/gmail-mcp.git
 cd gmail-mcp
 direnv allow  # or: nix develop
 gmail-mcp-setup  # Decrypts credentials and token
@@ -68,20 +68,17 @@ gmail-mcp-server
 
 ### Configure Claude Code
 
-Add to your Claude Code MCP configuration:
+Using the CLI (recommended):
 
-```json
-{
-  "mcpServers": {
-    "gmail": {
-      "command": "nix",
-      "args": ["run", "github:imalison/gmail-mcp"]
-    }
-  }
-}
+```bash
+# For local repo
+claude mcp add --scope user gmail -- nix run /path/to/gmail-mcp
+
+# Or from GitHub
+claude mcp add --scope user gmail -- nix run github:colonelpanic8/gmail-mcp
 ```
 
-Or if you have the repo cloned locally:
+Or manually add to your `~/.claude.json`:
 
 ```json
 {
